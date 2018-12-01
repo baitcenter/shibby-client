@@ -1,0 +1,3 @@
+// This file is used to access all utilities and global variables in .vue files
+@import 'settings/index', // Variables (z-indexes, colors, etc)
+        'utils/index'; // Scss functions to make life easier

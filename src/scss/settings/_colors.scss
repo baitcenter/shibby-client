@@ -1,0 +1,22 @@
+$navbar-gradient: linear-gradient(15deg, #11998e, #38ef7d ) ;
+$light-angle: 195deg;
+$orange: #EC914D;
+$orange-gradient: linear-gradient(135deg, $orange, desaturate(darken($orange, 9%), 9%));
+$green: #42555B;
+$new-green: #3ecf8e;
+$green-gradient: linear-gradient(15deg, #3ecf8e, saturate(darken($new-green, 15%), 2%));
+
+$states: (
+  success: #3ECF8E,
+  warning: #F1C40F,
+  error: #E74C3C
+);
+
+$states-gradient: (
+  success: linear-gradient(15deg, map-get($states, success), saturate(darken(map-get($states, success), 15%), 2%)),
+  success-tilt: linear-gradient(365deg, map-get($states, success), saturate(darken(map-get($states, success), 15%), 2%)),
+  warning: linear-gradient(15deg, map-get($states, warning), desaturate(darken(map-get($states, warning), 5%), 5%)),
+  warning-tilt: linear-gradient(15deg, map-get($states, warning), desaturate(darken(map-get($states, warning), 5%), 5%)),
+  error: linear-gradient(15deg, map-get($states, error), saturate(darken(map-get($states, error), 15%), 2%)),
+  error-tilt: linear-gradient(365deg, map-get($states, error), saturate(darken(map-get($states, error), 15%), 2%))
+);

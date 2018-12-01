@@ -1,0 +1,19 @@
+
+// Simple mixin when calling different viewports
+// Remember - you can't extend within media-querys
+//
+// basic usage:
+// @include respond (retina) {
+//   background-image: url('path/to/retina/image.png');
+//   background-size: 100px 50px;
+// }
+
+@import './../settings/_breakpoints.scss';
+
+@mixin respond ($size) {
+  @if map-has-key($mediaquerys, $size) {
+    @media #{map-get($mediaquerys, $size)} {
+      @content;
+    }
+  }
+}

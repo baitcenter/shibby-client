@@ -1,0 +1,27 @@
+// General UL/OL reset
+@mixin reset-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// User select
+@mixin user-select ($val: none) {
+  -webkit-touch-callout: $val;
+  @include prefix (user-select, $val);
+}
+
+// hover
+@mixin hover {
+  &:hover,
+  &:active,
+  &:focus {
+    @content;
+  }
+}
+
+// Calculate REM
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}

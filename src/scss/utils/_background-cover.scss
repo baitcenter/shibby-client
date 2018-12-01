@@ -1,0 +1,9 @@
+@mixin background-cover (
+  $image,
+  $color
+) {
+  background: #{$color} url('#{$image}');
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$image}', sizingMethod='scale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$image}', sizingMethod='scale')";
+  @include prefix(background-size, cover);
+}
