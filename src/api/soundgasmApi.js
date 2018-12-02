@@ -1,3 +1,4 @@
+// Abondened file, moved serverside
 // import Http from '@/libs/http'
 const axios = require('axios')
 const request = require('request')
