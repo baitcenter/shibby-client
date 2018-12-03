@@ -2,8 +2,8 @@
   <div class="app">
     <Topbar />
     <Sidebar />
-    <background />
     <router-view />
+    <background />
   </div>
 </template>
 
@@ -33,6 +33,7 @@ body {
 </style>
 
 <script>
+import DBservice from '@/services/dbService'
 import Sidebar from '@/components/Sidebar'
 import Topbar from '@/components/Topbar'
 import background from '@/components/common/background'
@@ -41,6 +42,24 @@ export default {
     background,
     Sidebar,
     Topbar
+  },
+  async created () {
+    try {
+      await this.fetchLocaldDB().then(res => {
+        this.$store.dispatch('entities/soundFiles/create', { data: res.data.sounds })
+        console.log(res.data.sounds)
+      })
+    } catch (err) {
+      console.error(err)
+    }
+    // this.fetchSounds()
+  },
+  methods: {
+    fetchLocaldDB () {
+      let response = DBservice.fetchFiles()
+      return response
+      // this.sounds = response.data.sounds
+    }
   }
 }
 </script>

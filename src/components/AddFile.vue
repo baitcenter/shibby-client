@@ -43,9 +43,9 @@ export default {
         description: this.sound.description,
         uploader: this.sound.uploader,
         downloadUrl: this.sound.downloadUrl,
-        localFileUrl: String,
+        localFileUrl: this.sound.localFileUrl,
         sourceUrl: this.sound.sourceUrl,
-        trackLength: Number,
+        trackLength: this.sound.trackLength,
         tags: this.sound.tags
       })
     },
