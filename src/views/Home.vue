@@ -1,8 +1,7 @@
 <template>
-  <div class="router-view">
+  <div class="router-view" v-bar>
+    <SearchIndex />
     <AddFile />
-
-    <FileList />
     <!-- <AutoTag />
     <img alt="Vue logo" src="../assets/logo.png"> -->
   </div>
@@ -21,14 +20,15 @@
 
 <script>
 import AddFile from '@/components/AddFile'
-import FileList from '@/components/FileList'
 // import AutoTag from '@/components/AutoTag'
+import SearchIndex from '@/components/SearchIndex'
+
 export default {
 
   name: 'home',
   components: {
     AddFile,
-    FileList
+    SearchIndex
     // AutoTag
   }
 }

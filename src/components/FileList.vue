@@ -1,8 +1,8 @@
 <template>
   <section class="file-list">
-    <article class="sound-file-list-item" v-for="sound in sounds" :key="sound.id">
+    <article class="sound-file-list-item" v-for="sound in sounds" :key="sound.$id">
       <h1>{{ sound.title }}</h1>
-      <p>{{ sound.description }}</p>
+      <VueMarkdown>{{ sound.description }}</VueMarkdown>
       <ul class="tag-list">
         <li v-for="tag in sound.tags" :key="tag.id">{{ tag }}</li>
       </ul>
@@ -33,32 +33,38 @@
 </style>
 
 <script>
-import DBservice from '@/services/dbService'
+// import DBservice from '@/services/dbService'
+import VueMarkdown from 'vue-markdown'
+// const sounds = soundFiles.all()
 export default {
   name: 'file-list',
+  components: {
+    VueMarkdown
+  },
   data () {
     return {
-      sounds: {},
-      sound: {}
+      sounds: {}
+      // sound: {}
     }
-  },
-  beforeMount () {
-    this.fetchSounds()
   },
   mounted () {
-    this.sounds = this.$store.getters.vuexDb
+    this.fetchLocalDb()
   },
   methods: {
-    async fetchSounds () {
-      const response = await DBservice.fetchFiles()
-      console.log(response)
-      this.$store.commit('change', response.data.sounds)
-      this.$router.push({ name: 'home' })
-      // this.sounds = response.data.sounds
-    },
-    pustToPlaylist () {
-      this.$store.commit('addToPlaylist', this.sound)
+    fetchLocalDb () {
+      this.sounds = this.$store.getters['entities/soundFiles/all']()
     }
+    // async fetchSounds () {
+    //   const response = await DBservice.fetchFiles()
+    //   console.log(response)
+    //   this.$store.commit('change', response.data.sounds)
+    //   this.$router.push({ name: 'home' })
+    //   // this.sounds = response.data.sounds
+    // },
+    // async pustToPlaylist () {
+    //   await this.$store.commit('addToPlaylist', this.sound)
+    // }
+
   }
 }
 </script>
