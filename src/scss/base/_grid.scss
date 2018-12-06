@@ -1,0 +1,14 @@
+@import '../tools';
+
+.app {
+  display: grid;
+  grid-template-columns: 1fr;
+  @include respond (desktop) {
+    grid-template-columns: repeat(14, 1fr);
+    grid-template-rows: min-content;
+  }
+  @include respond (xl-desktop) {
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: min-content;
+  }
+}

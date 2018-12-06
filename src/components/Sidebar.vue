@@ -12,15 +12,32 @@
             <router-link to="/files">Files</router-link>
           </li>
         </ul>
+       <AudioPlayer />
     </nav>
   </section>
 </template>
 
+<script>
+import AudioPlayer from '@/components/AudioPlayer'
+import Playlist from '@/models/Playlist'
+export default {
+  components: {
+    AudioPlayer
+  },
+  computed: {
+    playlist () {
+      return Playlist.query()
+        .withAll().get()
+    }
+  }
+}
+</script>
+
 <style lang="scss">
 @import '../scss/tools';
 .sidebar {
-  height: 100%;
-  width: 100%;
+  // height: 100%;
+  // width: 100%;
   color: #eee;
   background: linear-gradient($light-angle, #414345, #232526);
   grid-column: 1 / 4;

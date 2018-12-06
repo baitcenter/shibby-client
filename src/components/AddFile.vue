@@ -10,10 +10,9 @@
     <div class="result">
       <h1>{{ sound.title }}</h1>
       <p>{{ sound.description }}</p>
-      <p>{{ sound.tags }}</p>
-      <!-- <ul v-for="tag in tags">
-
-      </ul> -->
+      <ul class="tag-list">
+        <li v-for="tag in sound.tags" :key="tag">{{ tag }}</li>
+      </ul>
       <button v-if="sound.sourceUrl != null"
       v-on:click="addFile()">Index File</button>
     </div>
@@ -21,16 +20,13 @@
 </template>
 
 <script>
-// import soundgasmApi from '@/api/soundgasmApi'
 import Scraper from '@/services/scraper'
-import DBservice from '@/services/dbService'
-// import AutoTagger from '@/services/autoTagger'
-// import querystring from 'querystring'
+import SoundFile from '@//models/SoundFile'
+
 export default {
   data () {
     return {
-      soundgasmUrl: 'https://soundgasm.net/u/GateOfIvory/M-Sonnet-No-5',
-      // soundgasmUrl: '',
+      soundgasmUrl: '',
       sound: {}
     }
   },
@@ -38,15 +34,17 @@ export default {
   // },
   methods: {
     async addFile () {
-      await DBservice.addFile({
-        title: this.sound.title,
-        description: this.sound.description,
-        uploader: this.sound.uploader,
-        downloadUrl: this.sound.downloadUrl,
-        localFileUrl: this.sound.localFileUrl,
-        sourceUrl: this.sound.sourceUrl,
-        trackLength: this.sound.trackLength,
-        tags: this.sound.tags
+      await SoundFile.$create({
+        data: {
+          title: this.sound.title,
+          description: this.sound.description,
+          uploader: this.sound.uploader,
+          downloadUrl: this.sound.downloadUrl,
+          localFileUrl: this.sound.localFileUrl,
+          sourceUrl: this.sound.sourceUrl,
+          trackLength: this.sound.trackLength,
+          tags: this.sound.tags
+        }
       })
     },
     async fetchFile (params) {

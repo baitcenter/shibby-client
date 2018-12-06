@@ -2,7 +2,7 @@
   <div class="app">
     <Topbar />
     <Sidebar />
-    <router-view />
+    <router-view v-bar/>
     <background />
   </div>
 </template>
@@ -20,6 +20,7 @@ body {
   background-size: 200%;
   background-image: linear-gradient($light-angle, rgba(254,135,195, 0.8) 0%, rgba(130,141,254, 0.8) 50%, rgba(109,88,243, 0.8) 100%);
   transition: 600ms ease;
+  overflow: hidden;
   height: 100vh;
 
   &:hover {
@@ -33,10 +34,11 @@ body {
 </style>
 
 <script>
-import DBservice from '@/services/dbService'
+// import DBservice from '@/services/dbService'
 import Sidebar from '@/components/Sidebar'
 import Topbar from '@/components/Topbar'
 import background from '@/components/common/background'
+import SoundFile from '@/models/SoundFile'
 export default {
   components: {
     background,
@@ -46,8 +48,8 @@ export default {
   async created () {
     try {
       await this.fetchLocaldDB().then(res => {
-        this.$store.dispatch('entities/soundFiles/create', { data: res.data.sounds })
-        console.log(res.data.sounds)
+        this.$store.dispatch('localDB/soundFiles/create', { data: res.sounds })
+        // console.log(res)
       })
     } catch (err) {
       console.error(err)
@@ -55,8 +57,10 @@ export default {
     // this.fetchSounds()
   },
   methods: {
-    fetchLocaldDB () {
-      let response = DBservice.fetchFiles()
+    async fetchLocaldDB () {
+      // let response = DBservice.fetchFiles()
+      let response = await SoundFile.$fetch()
+      // console.log(response)
       return response
       // this.sounds = response.data.sounds
     }

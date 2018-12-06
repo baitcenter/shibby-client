@@ -1,5 +1,5 @@
 <template>
-  <div class="router-view" v-bar>
+  <div class="router-view">
     <SearchIndex />
     <AddFile />
     <!-- <AutoTag />
@@ -10,7 +10,6 @@
 <style lang="scss">
   .router-view {
     // display: grid;
-    padding: 1rem 1rem 0;
     grid-column: 4 / 17;
     grid-row: 2 / 3;
     z-index: 1;

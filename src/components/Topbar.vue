@@ -1,16 +1,13 @@
 <template>
   <section class="topbar">
     <h1 class="logo">Shibby</h1>
-    <SearchInput />
   </section>
 </template>
 
 <script>
-import SearchInput from '@/components/SearchInput'
 
 export default {
   components: {
-    SearchInput
   }
 }
 </script>
@@ -27,5 +24,9 @@ export default {
   align-items: center;
   justify-content: space-between;
   background: linear-gradient($light-angle, #ffdde1, #ee9ca7);
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
 }
 </style>
