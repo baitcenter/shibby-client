@@ -1,22 +1,34 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexORM from '@vuex-orm/core'
+import VuexORMAxios from '@vuex-orm/plugin-axios'
 import VuexORMSearch from '@vuex-orm/plugin-search'
-import SoundFile from '@/models/SoundFile'
+import database from '@/store/database'
 
 Vue.use(Vuex)
 VuexORM.use(VuexORMSearch, {
   // configure default fuse.js options here (see below)
+  shouldSort: true,
+  tokenize: true,
   caseSensitive: false,
   findAllMatches: true,
   keys: ['title', 'description', 'tags']
 })
 
-const database = new VuexORM.Database()
-database.register(SoundFile, {})
+VuexORM.use(VuexORMAxios, {
+  database,
+  http: {
+    baseUrl: 'https://localhost:3000',
+    url: '/',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  }
+})
 
 const store = new Vuex.Store({
-  plugins: [VuexORM.install(database)]
+  plugins: [VuexORM.install(database, { namespace: 'localDB' })]
   // state: {
   //   vuexDb: {},
   //   playlist: []

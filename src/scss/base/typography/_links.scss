@@ -1,8 +1,8 @@
 a {
-  color: $font-color;
+  color: $link-color;
 
   &:after {
-    border: 2px solid rgba(111, 148, 182, 0.25);
+    border: 2px solid $link-color;
   }
 
   &:hover {
