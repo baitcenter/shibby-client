@@ -7,9 +7,12 @@ export default class Playlist extends Model {
   static fields () {
     return {
       id: this.increment(),
-      file: this.attr({}),
+      title: this.string(),
+      artist: this.string(),
+      src: this.string(''),
       sound_id: this.string(),
       soundFiles: this.belongsTo(SoundFile, 'sound_id')
+      // file: this.attr([]),
     }
   }
 }

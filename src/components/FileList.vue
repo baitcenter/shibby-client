@@ -6,7 +6,6 @@
       <ul class="tag-list">
         <li v-for="tag in sound.tags" :key="tag.id">{{ tag }}</li>
       </ul>
-      <button v-on:click="pushToPlaylist()">Add to Playlist</button>
     </article>
   </section>
 </template>

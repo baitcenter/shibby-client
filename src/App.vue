@@ -9,10 +9,7 @@
 
 <style lang="scss">
 @import 'scss/tools';
-body {
-  margin: 0;
-  padding: 0;
-}
+
 .app {
   display: grid;
   grid-template-columns: repeat(16, 1fr);

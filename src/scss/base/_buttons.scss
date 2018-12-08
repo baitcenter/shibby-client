@@ -1,4 +1,4 @@
-.btn, button, [type=submit] {
+.btn, [type=submit] {
   font-family: $button-font;
   cursor: pointer;
   white-space: nowrap;
@@ -7,9 +7,9 @@
   line-height: 2.5rem;
   padding: 0 0.875rem;
   margin: 0.5em;
-  box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+  // box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
   background:  map-get($states-gradient, success);
-  border-radius: 0.25rem;
+  border-radius: 2.5rem;
   font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;

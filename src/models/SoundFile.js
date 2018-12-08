@@ -13,10 +13,11 @@ export default class SoundFile extends Model {
       downloadUrl: this.string(''),
       localFileUrl: this.attr(''),
       sourceUrl: this.string(''),
-      currentRating: this.attr(),
-      votes: this.attr(),
+      currentRating: this.attr(0),
+      votes: this.attr(0),
       trackLength: this.attr(),
       tags: this.attr(''),
+      isRated: this.boolean(false),
       playlistItem: this.hasOne(Playlist, 'sound_id')
     }
   }

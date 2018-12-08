@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <input type="text" v-model="searchInput" placeholder="Search...">
+  <div class="search-container">
+    <input class="transp-form" type="text" v-model="searchInput" placeholder="Search...">
     <ul class="filter-list">
       <li v-for="(tag, index) in tagFilter"
         :key="tag">
@@ -12,12 +12,25 @@
       <div>
 
       <article class="result-item" v-for="result in results" :key="result.$id">
-        <h3>{{ result.title }}</h3>
+
+        <h2 class="result-title">
+          <router-link v-bind:to="{ name: 'file', params: { id: result.$id } }">
+            {{ result.title }}
+          </router-link>
+        </h2>
         <Markdown>{{ result.description | truncate(50, '...') }}</Markdown>
         <ul class="tag-list">
-          <li v-for="tag in result.tags" :key="tag.id" @click="pushToTagFilter(tag)">{{ tag }}</li>
+          <li title="Add to Tag Filter" v-for="tag in result.tags" :key="tag.id" @click="pushToTagFilter(tag)">{{ tag }}</li>
         </ul>
-        <button @click="addToPlaylist(result)">Add to Playlist</button>
+        <button class="btn transp-btn"
+          :href="result.sourceUrl">
+          Go to source
+        </button>
+        <button class="btn transp-btn"
+          @click="addToPlaylist(result)">
+          Add to Playlist
+        </button>
+        <VRating :max="5" :value="0" :initial="0"/>
       </article>
 
       </div>
@@ -27,13 +40,16 @@
 
 <script>
 import Markdown from 'vue-markdown'
+import VRating from 'v-rating'
 import Playlist from '@/models/Playlist'
 const filterOptions = {
-  keys: ['tags']
+  keys: ['tags'],
+  threshold: 0
 }
 export default {
   components: {
-    Markdown
+    Markdown,
+    VRating
   },
   data () {
     return {
@@ -64,8 +80,11 @@ export default {
       console.log(input)
       Playlist.insert({
         data: {
-          file: input,
+          title: input.title,
+          artist: input.uploader,
+          src: input.downloadUrl,
           sound_id: input.$id
+          // file: input
         }
       })
     },
@@ -86,16 +105,30 @@ export default {
 </script>
 
 <style lang="scss">
+  @import '../scss/tools';
+
   .filter-list {
+    margin: 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     list-style-type: none;
+    transition: all 0.15s ease-in-out;
     li {
+      color: #eee;
       margin: 0 1rem 0 0;
       span {
         font-weight: bold;
+        cursor: pointer;
+        &:hover {
+          color: #333;
+        }
       }
+    }
+  }
+  .tag-list {
+    li {
+      cursor: pointer;
     }
   }
 
@@ -104,9 +137,21 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
+    padding: 1em;
   }
-
-  .result-item {
-    max-width: 37.5em;
+  .result-title {
+    a {
+      text-decoration: none;
+      color: $font-color;
+      &:hover {
+        color: $font-color;
+      }
+      &:visited {
+        color: $font-color;
+      }
+    }
   }
+  // .search-container {
+  //   max-width: 47.5em;
+  // }
 </style>

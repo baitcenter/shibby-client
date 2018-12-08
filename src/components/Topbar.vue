@@ -1,6 +1,6 @@
 <template>
   <section class="topbar">
-    <h1 class="logo">Shibby</h1>
+    <h1 class="logo">Shibbysearch</h1>
   </section>
 </template>
 

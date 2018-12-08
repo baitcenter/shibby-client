@@ -1,7 +1,6 @@
 <template>
   <div class="router-view">
     <SearchIndex />
-    <AddFile />
     <!-- <AutoTag />
     <img alt="Vue logo" src="../assets/logo.png"> -->
   </div>
@@ -18,7 +17,6 @@
 </style>
 
 <script>
-import AddFile from '@/components/AddFile'
 // import AutoTag from '@/components/AutoTag'
 import SearchIndex from '@/components/SearchIndex'
 
@@ -26,7 +24,6 @@ export default {
 
   name: 'home',
   components: {
-    AddFile,
     SearchIndex
     // AutoTag
   }
