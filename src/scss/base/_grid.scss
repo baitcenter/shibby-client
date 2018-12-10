@@ -3,12 +3,46 @@
 .app {
   display: grid;
   grid-template-columns: 1fr;
+  grid-gap: 1rem;
+  grid-template-areas: 
+  "sidebar logo"
+  "router-view router-view"
+  "audio-player audio-player"
+  ;
+  @include respond (tablet) {
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 4rem auto auto;
+    grid-template-areas: 
+    "logo router-view"
+    "sidebar router-view"
+    "audio-player router-view"
+    ". router-view";
+  }
   @include respond (desktop) {
-    grid-template-columns: repeat(14, 1fr);
-    grid-template-rows: min-content;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas: 
+    "logo router-view ."
+    "sidebar router-view audio-player"
+    ". router-view ."
+    ". router-view .";
   }
   @include respond (xl-desktop) {
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: min-content;
+    grid-template-columns: 2fr 4fr 2fr;
   }
+}
+
+.logo {
+  grid-area: logo;
+}
+
+.router-view {
+  grid-area: router-view;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.audio-player {
+  grid-area: audio-player;
 }

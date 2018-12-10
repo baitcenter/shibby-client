@@ -1,7 +1,7 @@
 <template>
   <div class="search-container">
     <input class="transp-form" type="text" v-model="searchInput" placeholder="Search...">
-    <ul class="filter-list">
+    <ul class="filter-list" v-if="tagFilter.length !== 0">
       <li v-for="(tag, index) in tagFilter"
         :key="tag">
         {{ tag }}
@@ -22,10 +22,13 @@
         <ul class="tag-list">
           <li title="Add to Tag Filter" v-for="tag in result.tags" :key="tag.id" @click="pushToTagFilter(tag)">{{ tag }}</li>
         </ul>
-        <button class="btn transp-btn"
+        <form :action="result.sourceUrl">
+          <input class="btn transp-btn" type="submit" value="Go to Source" />
+        </form>
+        <!-- <button class="btn transp-btn"
           :href="result.sourceUrl">
           Go to source
-        </button>
+        </button> -->
         <button class="btn transp-btn"
           @click="addToPlaylist(result)">
           Add to Playlist
@@ -108,7 +111,7 @@ export default {
   @import '../scss/tools';
 
   .filter-list {
-    margin: 0;
+    margin: 0.5rem 0 0 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -121,7 +124,7 @@ export default {
         font-weight: bold;
         cursor: pointer;
         &:hover {
-          color: #333;
+          color: #ff3f34;
         }
       }
     }
@@ -138,6 +141,9 @@ export default {
     flex-wrap: wrap;
     align-content: center;
     padding: 1em;
+    form {
+      display: inline;
+    }
   }
   .result-title {
     a {

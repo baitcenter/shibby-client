@@ -1,8 +1,9 @@
 <template>
   <div class="app">
-    <Topbar />
     <Sidebar />
-    <router-view v-bar/>
+    <Logo />
+    <router-view />
+    <AudioPlayer />
     <background />
   </div>
 </template>
@@ -11,13 +12,12 @@
 @import 'scss/tools';
 
 .app {
-  display: grid;
-  grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: min-content;
   background-size: 200%;
+  // background-image: linear-gradient($light-angle, rgba(254,135,195, 0.8) 0%, rgba(130,141,254, 0.8) 50%, rgba(109,88,243, 0.8) 100%);
   background-image: linear-gradient($light-angle, rgba(254,135,195, 0.8) 0%, rgba(130,141,254, 0.8) 50%, rgba(109,88,243, 0.8) 100%);
+  background-image: linear-gradient(($light-angle - 180), #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
   transition: 600ms ease;
-  overflow: hidden;
+  overflow: hidden scroll;
   height: 100vh;
 
   &:hover {
@@ -25,22 +25,21 @@
   }
 }
 
-.content {
-  grid-area: "Content";
-}
 </style>
 
 <script>
 // import DBservice from '@/services/dbService'
 import Sidebar from '@/components/Sidebar'
-import Topbar from '@/components/Topbar'
+import Logo from '@/components/Logo'
 import background from '@/components/common/background'
+import AudioPlayer from '@/components/AudioPlayer'
 import SoundFile from '@/models/SoundFile'
 export default {
   components: {
     background,
     Sidebar,
-    Topbar
+    AudioPlayer,
+    Logo
   },
   async created () {
     try {
