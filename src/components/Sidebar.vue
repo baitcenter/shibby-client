@@ -13,16 +13,14 @@
           </li>
         </ul>
     </nav>
-    <AudioPlayer />
   </section>
 </template>
 
 <script>
-import AudioPlayer from '@/components/AudioPlayer'
 import Playlist from '@/models/Playlist'
 export default {
   components: {
-    AudioPlayer
+
   },
   computed: {
     playlist () {

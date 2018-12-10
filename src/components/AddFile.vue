@@ -2,10 +2,11 @@
   <div class="add-file">
     <form class="search-form" @submit.prevent="fetchFile">
       <input
+        class="transp-form"
         type="text"
         placeholder="Soundgasm URL"
         v-model="soundgasmUrl">
-      <button class="btn">Submit</button>
+      <input class="btn transp-btn" type="submit" value="Submit"/>
     </form>
     <div class="result">
       <h1>{{ sound.title }}</h1>
@@ -13,7 +14,7 @@
       <ul class="tag-list">
         <li v-for="tag in sound.tags" :key="tag">{{ tag }}</li>
       </ul>
-      <button v-if="sound.sourceUrl != null"
+      <button class="transp-btn" v-if="sound.sourceUrl != null"
       v-on:click="addFile()">Index File</button>
     </div>
   </div>
@@ -62,3 +63,10 @@ export default {
 }
 
 </script>
+
+<style lang="scss">
+  .search-form {
+    display: flex;
+    flex-direction: row;
+  }
+</style>

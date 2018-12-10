@@ -24,7 +24,7 @@
 - [-] Playlist
   - [ ] Stop player from refreshing when adding tracks, push updates to new array?
 - [ ] Add Files modal
-- [ ] Responsive design
+- [-] Responsive design
 - [ ] Rating
 
 ## Secondary
