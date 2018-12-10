@@ -1,9 +1,9 @@
 // Media querys
 $mediaquerys: (
-  mobile: '(max-width: 480px)',
-  phablet: '(min-width: 640px)',
-  tablet: '(min-width: 960px)', // Changed from (max-width: 959px)
-  desktop: '(min-width: 1440px)', // Changed from (min-width: 960px)
+  mobile: '(max-width: 479px)',
+  phablet: '(min-width: 480px) and (max-width: 767px)',
+  tablet: '(min-width: 768px) and (max-width: 1439px)', // Changed from (max-width: 959px)
+  desktop: '(min-width: 1440px) and (max-width: 1920px)', // Changed from (min-width: 960px)
   xl-desktop: '(min-width: 1921px)',
 
   print: '(max-width: print)',

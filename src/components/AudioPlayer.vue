@@ -7,8 +7,7 @@
     <!-- <av-waveform ref-link="player">
     </av-waveform> -->
     <Aplayer
-      v-if="playlist.length !== 0"
-      :list="playlist"
+       :list="playlist"
        autoplay="true"
       :music="{
         src: playlist.src,
@@ -42,13 +41,9 @@ export default {
 
 <style lang="scss">
   .audio-player {
-    overflow: hidden;
-    .aplayer {
-      margin: 0;
-    }
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
   }
 </style>

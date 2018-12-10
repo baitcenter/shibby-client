@@ -7,7 +7,13 @@
 </template>
 
 <style lang="scss">
-
+  .router-view {
+    // display: grid;
+    grid-column: 4 / 17;
+    grid-row: 2 / 3;
+    z-index: 1;
+    width: 100%;
+  }
 </style>
 
 <script>

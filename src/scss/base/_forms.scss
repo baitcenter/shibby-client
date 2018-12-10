@@ -4,14 +4,11 @@ input[type=email],
 input[type=search], 
 select {
   width: calc(100% - 2rem);
-  padding: 0 1rem;
-  margin: 0.5rem 1rem;
-  line-height: 2.5rem;
+  padding: 12px 20px;
+  margin: 0.5rem 1em;
   display: inline-block;
-  background: transparent;
   border: 1px solid #ccc;
-  border: 2px solid rgba(240, 240, 240, 0.6);
-  border-radius: 2.5rem;
+  border-radius: 4px;
   box-sizing: border-box;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -25,8 +22,10 @@ select {
   }
 
   &.transp-form {
+    background: transparent;
     color: #eee;
     // font-weight: bold;
+    border: 2px solid rgba(240, 240, 240, 0.6);
 
     &:focus {
       border: 2px solid rgba(255, 255, 255, 1);
@@ -74,5 +73,5 @@ textarea, textarea[type=text] {
 
 input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=search]:focus, textarea:focus, textarea[type=text]:focus {
   border: 1px solid lighten($green, 25%);
-  // border-radius: 4px;
+  border-radius: 4px;
 }

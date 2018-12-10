@@ -1,58 +1,33 @@
 <template>
-  <section class="router-view">
-    <article class="single-file">
-      <h2>{{ file.title }}</h2>
-      <Markdown>{{ file.description }}</Markdown>
-      <ul class="tag-list">
-        <li v-for="tag in file.tags" :key="tag">{{ tag }}</li>
-      </ul>
-    </article>
-  </section>
+  <article>
+    <h2>{{ file.title }}</h2>
+    <VueMarkdown>{{ file.description }}</VueMarkdown>
+  </article>
 </template>
 
 <script>
 import SoundFile from '@/models/SoundFile'
-import Markdown from 'vue-markdown'
-
+import VueMarkdown from 'vue-markdown'
 export default {
   components: {
-    Markdown
+    VueMarkdown
   },
   computed: {
     file () {
-      return SoundFile.find(this.$route.params.id)
+      let id = this.$route.params.id
+      return SoundFile.query(id)
     }
   },
-  data () {
-    return {
-      isEditable: true
-    }
-  },
+  // data () {
+  //   return {
+  //     file: {}
+  //   }
+  // },
   mounted: {
 
   },
   methods: {
-    async updateFile () {
-      await SoundFile.$update({
-        data: {
-          title: this.file.title,
-          description: this.file.description,
-          uploader: this.file.uploader,
-          downloadUrl: this.file.downloadUrl,
-          localFileUrl: this.file.localFileUrl,
-          sourceUrl: this.file.sourceUrl,
-          trackLength: this.file.trackLength,
-          tags: this.file.tags
-        }
-      })
-    }
+
   }
 }
 </script>
-
-<style lang="scss">
-
-  .single-file {
-    margin: 0 1rem;
-  }
-</style>
