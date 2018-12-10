@@ -42,11 +42,9 @@ export default {
 
 <style scoped>
   .live-edit {
-    font-family: 'Courier New', Courier, monospace;
     height: auto;
     display: block;
     font-size: 1em !important;
-    /* font-family: inherit; */
     background: transparent;
     color: inherit;
     border: none

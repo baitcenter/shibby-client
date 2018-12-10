@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <Sidebar />
+    <Navigation />
     <Logo />
     <router-view />
     <AudioPlayer />
@@ -14,7 +14,6 @@
 .app {
   background-size: 200%;
   // background-image: linear-gradient($light-angle, rgba(254,135,195, 0.8) 0%, rgba(130,141,254, 0.8) 50%, rgba(109,88,243, 0.8) 100%);
-  background-image: linear-gradient($light-angle, rgba(254,135,195, 0.8) 0%, rgba(130,141,254, 0.8) 50%, rgba(109,88,243, 0.8) 100%);
   background-image: linear-gradient(($light-angle - 180), #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
   transition: 600ms ease;
   overflow: hidden scroll;
@@ -29,7 +28,7 @@
 
 <script>
 // import DBservice from '@/services/dbService'
-import Sidebar from '@/components/Sidebar'
+import Navigation from '@/components/Navigation'
 import Logo from '@/components/Logo'
 import background from '@/components/common/background'
 import AudioPlayer from '@/components/AudioPlayer'
@@ -37,7 +36,7 @@ import SoundFile from '@/models/SoundFile'
 export default {
   components: {
     background,
-    Sidebar,
+    Navigation,
     AudioPlayer,
     Logo
   },

@@ -17,13 +17,11 @@ export default {
 <style lang="scss">
 @import '../scss/tools';
 .logo {
-  // padding: 0 1rem;
   z-index: 1;
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
-  // background: linear-gradient($light-angle, #ffdde111, #ee9ca7);
   a {
     text-decoration: none;
   }

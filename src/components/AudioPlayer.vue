@@ -1,11 +1,5 @@
 <template>
   <div class="audio-player">
-      <!-- <vue-audio
-      :file="playlist.file.downloadUrl"
-      ref="player"
-      ></vue-audio> -->
-    <!-- <av-waveform ref-link="player">
-    </av-waveform> -->
     <Aplayer
       v-if="playlist.length !== 0"
       :list="playlist"
@@ -20,18 +14,14 @@
 </template>
 
 <script>
-// import Playlist from '@/models/Playlist'
 import Aplayer from 'vue-aplayer'
-// import VueAudio from 'vue-audio'
 export default {
   components: {
     Aplayer
-    // VueAudio
   },
   computed: {
     playlist () {
       return this.$store.getters['localDB/playlist/query']().all()
-      // return Playlist.query().with('soundFiles').get()
     }
   },
   methods: {
@@ -46,9 +36,5 @@ export default {
     .aplayer {
       margin: 0;
     }
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-content: center;
   }
 </style>

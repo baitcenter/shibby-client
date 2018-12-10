@@ -4,17 +4,17 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 1rem;
+  grid-template-rows: 4rem auto auto;
   grid-template-areas: 
-  "sidebar logo"
+  "navigation logo"
   "router-view router-view"
   "audio-player audio-player"
   ;
   @include respond (tablet) {
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: 4rem auto auto;
     grid-template-areas: 
     "logo router-view"
-    "sidebar router-view"
+    "navigation router-view"
     "audio-player router-view"
     ". router-view";
   }
@@ -22,7 +22,7 @@
     grid-template-columns: 1fr 3fr 1fr;
     grid-template-areas: 
     "logo router-view ."
-    "sidebar router-view audio-player"
+    "navigation router-view audio-player"
     ". router-view ."
     ". router-view .";
   }
@@ -39,8 +39,8 @@
   grid-area: router-view;
 }
 
-.sidebar {
-  grid-area: sidebar;
+.navigation {
+  grid-area: navigation;
 }
 
 .audio-player {

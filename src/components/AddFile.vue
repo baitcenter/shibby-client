@@ -31,8 +31,6 @@ export default {
       sound: {}
     }
   },
-  // mounted: {
-  // },
   methods: {
     async addFile () {
       await SoundFile.$create({
@@ -55,9 +53,6 @@ export default {
         }
       })
       this.sound = response.data
-      // this.sound.tags = AutoTagger(this.sound.title)
-      console.log(this.soundgasmUrl)
-      console.log(this.sound)
     }
   }
 }

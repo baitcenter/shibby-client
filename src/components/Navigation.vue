@@ -1,15 +1,12 @@
 <template>
-  <section class="sidebar">
+  <section class="navigation">
     <nav class="nav">
         <ul>
           <li>
             <router-link to="/">Home</router-link>
           </li>
           <li>
-            <router-link to="/about">About</router-link>
-          </li>
-          <li>
-            <router-link to="/files">Files</router-link>
+            <router-link to="/addfile">Add File</router-link>
           </li>
         </ul>
     </nav>
@@ -33,38 +30,45 @@ export default {
 
 <style lang="scss">
 @import '../scss/tools';
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  // height: 100%;
-  // width: 100%;
+.navigation {
   color: #eee;
-  // background: linear-gradient($light-angle, #414345, #232526);
-  grid-column: 1 / 4;
-  grid-row: 2 / 3;
-  z-index: 1;
   .nav {
+  display: flex;
+  flex-direction: row;
   margin: 1rem 0 0 0;
   padding: 0 1em;
-  border-right: 1px solid #eee;
+  @include respond(tablet) {
+    flex-direction: row-reverse;
+  }
     ul {
-      // display: flex;
-      // flex-direction: column;
+      display: flex;
+      flex-direction: row;
       margin: 0;
       padding: 0;
       list-style-type: none;
+      @include respond(tablet) {
+        flex-direction: column;
+        border-right: 1px solid #eee;
+      }
     }
     li {
+      margin: 0 0.5rem;
       display: flex;
       flex-direction: row;
-      justify-content: flex-end;
       line-height: 2.5rem;
+      @include respond(tablet) {
+        flex-direction: row-reverse;
+      }
     }
     a {
+      white-space: nowrap;
       border-bottom: 1px solid #eee;
       width: min-content;
       text-decoration: none;
+      &.router-link-exact-active {
+        font-weight: bold;
+        border-bottom: 2px solid #eee;
+      }
     }
   }
   .audio-player {

@@ -25,15 +25,10 @@
         <form :action="result.sourceUrl">
           <input class="btn transp-btn" type="submit" value="Go to Source" />
         </form>
-        <!-- <button class="btn transp-btn"
-          :href="result.sourceUrl">
-          Go to source
-        </button> -->
         <button class="btn transp-btn"
           @click="addToPlaylist(result)">
           Add to Playlist
         </button>
-        <VRating :max="5" :value="0" :initial="0"/>
       </article>
 
       </div>
@@ -43,7 +38,6 @@
 
 <script>
 import Markdown from 'vue-markdown'
-import VRating from 'v-rating'
 import Playlist from '@/models/Playlist'
 const filterOptions = {
   keys: ['tags'],
@@ -51,8 +45,7 @@ const filterOptions = {
 }
 export default {
   components: {
-    Markdown,
-    VRating
+    Markdown
   },
   data () {
     return {
