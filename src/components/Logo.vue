@@ -17,11 +17,15 @@ export default {
 <style lang="scss">
 @import '../scss/tools';
 .logo {
+  margin: 0 1rem;
   z-index: 1;
   display: flex;
   flex-direction: row-reverse;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
+  @include respond(tablet) {
+    justify-content: flex-start;
+  }
   a {
     text-decoration: none;
   }

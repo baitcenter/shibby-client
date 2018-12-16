@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 1rem;
-  grid-template-rows: 4rem auto auto;
+  grid-template-rows: 4rem min-content auto;
   grid-template-areas: 
   "navigation logo"
   "router-view router-view"

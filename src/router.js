@@ -28,6 +28,14 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "singlefile" */ './components/SingleFile.vue')
+    },
+    {
+      path: '/edit/:id',
+      name: 'edit',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "editfile" */ './components/EditFile.vue')
     }
   ]
 })

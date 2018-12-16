@@ -2,17 +2,16 @@
   <div class="search-container">
     <input class="transp-form" type="text" v-model="searchInput" placeholder="Search...">
     <ul class="filter-list" v-if="tagFilter.length !== 0">
+      <li v-if="tagFilter.length > 1" class="clear-filters" @click="clearFilters">Clear all filters</li>
       <li v-for="(tag, index) in tagFilter"
         :key="tag">
         {{ tag }}
-        <span @click="removeFromTagFilter(index)">X</span>
+        <span @click="removeFromTagFilter(index)">
+          <font-awesome-icon :icon="close"></font-awesome-icon></span>
       </li>
     </ul>
     <section class="result-container">
-      <div>
-
       <article class="result-item" v-for="result in results" :key="result.$id">
-
         <h2 class="result-title">
           <router-link v-bind:to="{ name: 'file', params: { id: result.$id } }">
             {{ result.title }}
@@ -20,18 +19,23 @@
         </h2>
         <Markdown>{{ result.description | truncate(50, '...') }}</Markdown>
         <ul class="tag-list">
-          <li title="Add to Tag Filter" v-for="tag in result.tags" :key="tag.id" @click="pushToTagFilter(tag)">{{ tag }}</li>
+          <li title="Add to Tag Filter"
+            v-for="tag in result.tags"
+            :key="tag.id"
+            @click="pushToTagFilter(tag)
+          ">{{ tag }}</li>
         </ul>
-        <form :action="result.sourceUrl">
-          <input class="btn transp-btn" type="submit" value="Go to Source" />
+        <form :action="result.sourceUrl" target="_blank">
+          <input class="btn"
+            type="submit"
+            value="Go to Source"
+          />
         </form>
-        <button class="btn transp-btn"
+        <button class="btn"
           @click="addToPlaylist(result)">
           Add to Playlist
         </button>
       </article>
-
-      </div>
     </section>
   </div>
 </template>
@@ -39,18 +43,22 @@
 <script>
 import Markdown from 'vue-markdown'
 import Playlist from '@/models/Playlist'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 const filterOptions = {
   keys: ['tags'],
   threshold: 0
 }
 export default {
   components: {
-    Markdown
+    Markdown,
+    FontAwesomeIcon
   },
   data () {
     return {
       searchInput: '',
-      tagFilter: []
+      tagFilter: [],
+      close: faTimes
     }
   },
   filters: {
@@ -89,6 +97,9 @@ export default {
     },
     removeFromTagFilter (index) {
       this.$delete(this.tagFilter, index)
+    },
+    clearFilters () {
+      this.tagFilter = []
     }
   }
   // , resultTags () {
@@ -113,6 +124,9 @@ export default {
     li {
       color: #eee;
       margin: 0 1rem 0 0;
+      &.clear-filters {
+        cursor: pointer;
+      }
       span {
         font-weight: bold;
         cursor: pointer;
@@ -129,6 +143,7 @@ export default {
   }
 
   .result-container {
+    margin: -2.5rem 0 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -139,6 +154,7 @@ export default {
     }
   }
   .result-title {
+    font-size: 2em;
     a {
       text-decoration: none;
       color: $font-color;

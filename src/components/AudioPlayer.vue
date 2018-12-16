@@ -22,8 +22,18 @@ export default {
   computed: {
     playlist () {
       return this.$store.getters['localDB/playlist/query']().all()
-    }
+    } // ,
+    // playlist () {
+    //   playlistFetch.forEach(item => {
+    //     this.playlist.push(item)
+    //   })
+    // }
   },
+  // data () {
+  //   return {
+  //     playlist: []
+  //   }
+  // },
   methods: {
 
   }

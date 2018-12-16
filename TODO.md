@@ -23,9 +23,10 @@
 - [X] Audio player, ensure song plays during navigation
 - [-] Playlist
   - [ ] Stop player from refreshing when adding tracks, push updates to new array?
-- [ ] Add Files modal
+- [X] Add Files modal
 - [-] Responsive design
 - [ ] Rating
+- [ ] Add modals for success and warnings
 
 ## Secondary
 

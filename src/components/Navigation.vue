@@ -48,22 +48,28 @@ export default {
       list-style-type: none;
       @include respond(tablet) {
         flex-direction: column;
-        border-right: 1px solid #eee;
+        border-right: 1px solid #eee9;
       }
     }
     li {
       margin: 0 0.5rem;
+      padding: 0.25rem 0.5rem;
       display: flex;
       flex-direction: row;
       line-height: 2.5rem;
+      transition: 0.25s ease-in-out;
       @include respond(tablet) {
         flex-direction: row-reverse;
+        &:hover {
+          padding-right: 1.25rem;
+        }
       }
     }
     a {
-      white-space: nowrap;
       border-bottom: 1px solid #eee;
       width: min-content;
+      color: inherit;
+      white-space: nowrap;
       text-decoration: none;
       &.router-link-exact-active {
         font-weight: bold;

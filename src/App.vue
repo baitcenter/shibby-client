@@ -14,11 +14,10 @@
 .app {
   background-size: 200%;
   // background-image: linear-gradient($light-angle, rgba(254,135,195, 0.8) 0%, rgba(130,141,254, 0.8) 50%, rgba(109,88,243, 0.8) 100%);
-  background-image: linear-gradient(($light-angle - 180), #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
+  background-image: linear-gradient(($light-angle - 180), #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%); // Slightly better contrast
   transition: 600ms ease;
   overflow: hidden scroll;
   height: 100vh;
-
   &:hover {
     background-position: 80% 0; // We only move the background position
   }
@@ -49,13 +48,10 @@ export default {
     } catch (err) {
       console.error(err)
     }
-    // this.fetchSounds()
   },
   methods: {
     async fetchLocaldDB () {
-      // let response = DBservice.fetchFiles()
       let response = await SoundFile.$fetch()
-      // console.log(response)
       return response
       // this.sounds = response.data.sounds
     }

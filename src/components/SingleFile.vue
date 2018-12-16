@@ -6,6 +6,11 @@
       <ul class="tag-list">
         <li v-for="tag in file.tags" :key="tag">{{ tag }}</li>
       </ul>
+      <button v-if="hasAuth" lass="btn transp-btn">
+        <router-link v-bind:to="{ name: 'edit', params: { id: file.$id } }">
+          Edit File
+        </router-link>
+      </button>
     </article>
   </section>
 </template>
@@ -25,6 +30,7 @@ export default {
   },
   data () {
     return {
+      hasAuth: false,
       isEditable: true
     }
   },

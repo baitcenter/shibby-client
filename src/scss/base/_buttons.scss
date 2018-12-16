@@ -4,47 +4,36 @@
   white-space: nowrap;
   display: inline-block;
   height: 2.5rem;
-  // line-height: 2.5rem;
   padding: 0 0.875rem;
   margin: 0.5em;
-  // box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
-  background:  map-get($states-gradient, success);
   border-radius: 2.5rem;
+  background: transparent;
+  color: #eee;
+  border: 2px solid #eee;
   font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
-  text-shadow: 2px 2px rgba(0,0,0,.08);
   letter-spacing: .025em;
-  color: #F1F1F1;
   text-decoration: none;
   transition: $transition-all;
   appearance: none;
   outline: none;
-  border: 0;
-
+  
   &.tiny {
     height: 2rem;
     line-height: 2rem;
     font-size: 0.95rem;
   }
-
-  &.transp-btn {
-    background: transparent;
-    color: #eee;
-    // font-weight: bold;
-    border: 2px solid #eee;
-    &:focus {
-      border: 2px solid #eee;
-      box-shadow: inset rgba(255, 234, 252, 0.5) 0 0 0.75rem;
-    }
-    &:active {
-      background: transparent;
-    }
-  }
+  
   &:hover {
     color: white;
     transform: translateY(-1px);
     box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+    text-shadow: 0 3px 6px rgba(0,0,0,.08);
+  }
+  &:focus {
+    border: 2px solid #eee;
+    box-shadow: inset rgba(255, 234, 252, 0.5) 0 0 0.75rem;
   }
   
   &:disabled {
@@ -53,7 +42,7 @@
   }
   
   &:active {
-    background: map-get($states-gradient, success-tilt);
+     background: transparent;
     transform: scale(0.975);
   }
 
