@@ -45,9 +45,9 @@ import Markdown from 'vue-markdown'
 import Playlist from '@/models/Playlist'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-const filterOptions = {
+const tagFilterOptions = {
   keys: ['tags'],
-  threshold: 0
+  threshold: 0.1
 }
 export default {
   components: {
@@ -74,7 +74,7 @@ export default {
   computed: {
     results () {
       // return this.$store.getters['localDB/soundFiles/query']().search(this.searchInput).where().get()
-      return this.$store.getters['localDB/soundFiles/query']().search(this.tagFilter, filterOptions).search(this.searchInput).get()
+      return this.$store.getters['localDB/soundFiles/query']().search(this.tagFilter, tagFilterOptions).search(this.searchInput).get()
     }
     // allTags () {
     // }

@@ -13,7 +13,7 @@
       <textarea-autosize v-model="sound.title"></textarea-autosize>
       <p>Description, feel free to use Markdown</p>
       <section class="description">
-       <textarea-autosize v-model="sound.description"></textarea-autosize>
+       <textarea-autosize class="markdown-input" v-model="sound.description"></textarea-autosize>
        <Markdown :source="sound.description"></Markdown>
       </section>
       <p>Tags:</p>
@@ -23,7 +23,7 @@
           <span @click="removeTag(index)"><font-awesome-icon :icon="removeIcon"></font-awesome-icon></span>
         </li>
       </ul>
-      <input type="text" placeholder="Add new tag" v-model="newTag" @submit.prevent="sound.tags.push(newTag)">
+      <input type="text" placeholder="Add new tag" v-model="newTag" @submit="sound.tags.push(this)">
       <!-- <ul class="tag-list">
         <li v-for="tag in sound.tags" :key="tag">{{ tag }}</li>
       </ul> -->
@@ -101,6 +101,9 @@ export default {
       flex-direction: column;
       @include respond(tablet) {
         flex-direction: row;
+        .markdown-input{
+          max-width: 50%;
+        }
       }
       textarea {
         margin: 0 1rem 0 0;
