@@ -11,7 +11,7 @@ export default class Playlist extends Model {
       artist: this.string(),
       src: this.string(''),
       sound_id: this.string(),
-      soundFiles: this.belongsTo(SoundFile, 'sound_id')
+      file: this.belongsTo(SoundFile, 'sound_id')
       // file: this.attr([]),
     }
   }

@@ -24,7 +24,7 @@ export default class SoundFile extends Model {
 
   static methodConf = {
     http: {
-      baseUrl: 'http://localhost:8000',
+      baseUrl: 'https://shibbysearch.site/api',
       url: '/soundfiles'
     },
     methods: {

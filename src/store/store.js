@@ -18,7 +18,7 @@ VuexORM.use(VuexORMSearch, {
 VuexORM.use(VuexORMAxios, {
   database,
   http: {
-    baseUrl: 'https://localhost:3000',
+    baseURL: 'https://shibbysearch.site/api',
     url: '/',
     headers: {
       'Accept': 'application/json',

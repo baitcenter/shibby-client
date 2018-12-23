@@ -30,6 +30,7 @@ export default {
     text-decoration: none;
   }
   h1 {
+    color: $font-color;
     margin: 0;
     font-size: 2rem;
   }
