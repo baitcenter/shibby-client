@@ -1,10 +1,12 @@
 <template>
   <div class="app">
+
     <Navigation />
     <Logo />
     <router-view />
     <AudioPlayer />
     <background />
+
   </div>
 </template>
 
