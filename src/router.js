@@ -14,20 +14,28 @@ export default new Router({
       component: Home
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/addfile',
+      name: 'addfile',
       // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
+      // this generates a separate chunk (addfile.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      component: () => import(/* webpackChunkName: "addfile" */ './views/AddFile.vue')
     },
     {
-      path: '/files',
-      name: 'files',
+      path: '/file/:id',
+      name: 'file',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/Files.vue')
+      component: () => import(/* webpackChunkName: "singlefile" */ './components/SingleFile.vue')
+    },
+    {
+      path: '/edit/:id',
+      name: 'edit',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "editfile" */ './components/EditFile.vue')
     }
   ]
 })
