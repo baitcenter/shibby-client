@@ -75,6 +75,10 @@ export default {
       const response = await Scraper.scrapeFile({
         params: {
           soundgasmUrl: this.soundgasmUrl
+        },
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
         }
       })
       this.sound = response.data
