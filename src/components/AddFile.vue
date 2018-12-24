@@ -6,7 +6,7 @@
         type="text"
         placeholder="Soundgasm URL"
         v-model="soundgasmUrl">
-      <input class="btn" type="submit" value="Submit"/>
+      <input class="btn" type="submit" value="Scrape"/>
     </form>
     <div class="result" v-if="sound.sourceUrl != undefined">
       <p>Title:</p>
@@ -23,14 +23,14 @@
           <span @click="removeTag(index)"><font-awesome-icon :icon="removeIcon"></font-awesome-icon></span>
         </li>
       </ul>
-      <input type="text" placeholder="Add new tag" v-model="newTag" @submit="sound.tags.push(this)">
+      <input type="text" placeholder="Add new tag" v-model="newTag" @submit="sound.tags.push(newTag)">
       <!-- <ul class="tag-list">
         <li v-for="tag in sound.tags" :key="tag">{{ tag }}</li>
       </ul> -->
       <button class="btn"
         v-if="sound.sourceUrl != null"
         v-on:click="addFile()">
-        Index File
+        Add File
       </button>
     </div>
   </div>
@@ -50,7 +50,7 @@ export default {
   },
   data () {
     return {
-      soundgasmUrl: 'https://soundgasm.net/u/kinkyshibby/F4MTomboy-Paintball-Buddies-with-Benefits-Friends-to-LoversPlayfulLaughingBallsy-and-BustySlow-BuildMassageIce-PlayCunnilingusFuck-meMoansPull-out-and-put-it-in-my-mouthIllSwallowScript-Fill',
+      soundgasmUrl: '',
       sound: {},
       newTag: '',
       removeIcon: faTimes
@@ -63,11 +63,11 @@ export default {
           title: this.sound.title,
           description: this.sound.description,
           uploader: this.sound.uploader,
+          sourceUrl: this.sound.sourceUrl,
           downloadUrl: this.sound.downloadUrl,
           localFileUrl: this.sound.localFileUrl,
-          sourceUrl: this.sound.sourceUrl,
-          trackLength: this.sound.trackLength,
-          tags: this.sound.tags
+          tags: this.sound.tags,
+          trackLength: this.sound.trackLength
         }
       })
     },
