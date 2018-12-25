@@ -35,9 +35,9 @@ export default {
   .nav {
   display: flex;
   flex-direction: row;
-  margin: 1rem 0 0 0;
   padding: 0 1em;
   @include respond(tablet) {
+    margin: 1rem 0;
     flex-direction: row-reverse;
   }
     ul {
