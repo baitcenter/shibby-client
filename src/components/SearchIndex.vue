@@ -24,7 +24,7 @@
             @click="pushToTagFilter(tag)
           ">{{ tag }}</li>
         </ul>
-        <Markdown>{{ result.description | truncate(50, '...') }}</Markdown>
+        <p>{{ result.description | truncate(50, '...') }}</p>
         <footer class="result-footer">
           <form :action="result.sourceUrl" target="_blank">
             <input class="btn"
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import Markdown from 'vue-markdown'
+// import Markdown from 'vue-markdown'
 import Playlist from '@/models/Playlist'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -55,7 +55,7 @@ const tagFilterOptions = {
 }
 export default {
   components: {
-    Markdown,
+    // Markdown,
     FontAwesomeIcon
   },
   data () {
@@ -78,7 +78,10 @@ export default {
   computed: {
     results () {
       // return this.$store.getters['localDB/soundFiles/query']().search(this.searchInput).where().get()
-      return this.$store.getters['localDB/soundFiles/query']().search(this.tagFilter, tagFilterOptions).search(this.searchInput).get()
+      return this.$store.getters['localDB/soundFiles/query']()
+        .search(this.tagFilter, tagFilterOptions)
+        .search(this.searchInput)
+        .get()
     }
     // allTags () {
     // }
