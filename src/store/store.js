@@ -9,12 +9,10 @@ Vue.use(Vuex)
 VuexORM.use(VuexORMSearch, {
   // configure default fuse.js options here (see below)
   shouldSort: true,
-  tokenize: true,
-  matchAllTokens: true,
-  minMatchCharLength: 3,
+  minMatchCharLength: 1,
   caseSensitive: false,
   findAllMatches: true,
-  keys: ['title', 'description', 'tags']
+  keys: ['title', 'description']
 })
 
 VuexORM.use(VuexORMAxios, {

@@ -1,13 +1,17 @@
 <template>
   <div class="search-container">
-    <input class="transp-form" type="text" v-model="searchInput" placeholder="Search...">
+    <div class="search-form">
+      <input class="transp-form search-input" type="text" v-model="searchInput" placeholder="Search...">
+      <button class="btn" v-if=" searchInput != '' " @click="searchInput = '' ">Clear</button>
+    </div>
     <ul class="filter-list" v-if="tagFilter.length !== 0">
       <li v-if="tagFilter.length > 1" class="clear-filters" @click="clearFilters">Clear all filters</li>
       <li v-for="(tag, index) in tagFilter"
         :key="tag">
         {{ tag }}
         <span @click="removeFromTagFilter(index)">
-          <font-awesome-icon :icon="close"></font-awesome-icon></span>
+          <font-awesome-icon :icon="close"></font-awesome-icon>
+        </span>
       </li>
     </ul>
     <section class="result-container">
@@ -17,6 +21,7 @@
             {{ result.title }}
           </router-link>
         </h2>
+        <small>By: {{ result.uploader }}</small>
         <ul v-if="result.tags.length !== 0" class="tag-list">
           <li title="Add to Tag Filter"
             v-for="tag in result.tags"
@@ -53,6 +58,22 @@ const tagFilterOptions = {
   // matchAllTokens: true,
   threshold: 0.1
 }
+const searchInputOptions = {
+  keys: [{
+    name: 'title',
+    weight: 0.6
+  }, {
+    name: 'description',
+    weight: 0.3
+  }, {
+    name: 'tags',
+    weight: 0.2
+  }],
+  tokenize: true,
+  minMatchCharLength: 2,
+  matchAllTokens: true,
+  threshold: 0.3
+}
 export default {
   components: {
     // Markdown,
@@ -80,7 +101,7 @@ export default {
       // return this.$store.getters['localDB/soundFiles/query']().search(this.searchInput).where().get()
       return this.$store.getters['localDB/soundFiles/query']()
         .search(this.tagFilter, tagFilterOptions)
-        .search(this.searchInput)
+        .search(this.searchInput, searchInputOptions)
         .get()
     }
     // allTags () {
@@ -121,6 +142,16 @@ export default {
 <style lang="scss">
   @import '../scss/tools';
 
+  .search-form {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+  }
+  .search-input {
+    &::-webkit-search-cancel-button {
+      color: $font-color;
+    }
+  }
   .filter-list {
     margin: 0.5rem 0 0 0;
     display: flex;
@@ -144,7 +175,7 @@ export default {
     }
   }
   .tag-list {
-    padding: 0 -0.25rem;
+    margin: 0 -0.25rem;
     li {
       cursor: pointer;
     }
@@ -164,11 +195,11 @@ export default {
   .result-item {
     width: 100%;
     // margin-bottom: -1.5rem;
-    &:first-of-type {
-      .result-title {
-        margin-top: 0;
-      }
-    }
+    // &:first-of-type {
+    //   .result-title {
+    //     margin-top: 0;
+    //   }
+    // }
   }
   .result-title {
     margin-top: 1rem;
