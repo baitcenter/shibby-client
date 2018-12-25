@@ -6,6 +6,16 @@
       <ul class="tag-list">
         <li v-for="tag in file.tags" :key="tag">{{ tag }}</li>
       </ul>
+      <form :action="file.sourceUrl" target="_blank">
+        <input class="btn"
+          type="submit"
+          value="Go to Source"
+        />
+      </form>
+      <button class="btn"
+        @click="addToPlaylist(file)">
+        Add to Playlist
+      </button>
       <button v-if="hasAuth" lass="btn transp-btn">
         <router-link v-bind:to="{ name: 'edit', params: { id: file.$id } }">
           Edit File
@@ -17,6 +27,7 @@
 
 <script>
 import SoundFile from '@/models/SoundFile'
+import Playlist from '@/models/Playlist'
 import Markdown from 'vue-markdown'
 
 export default {
@@ -49,6 +60,18 @@ export default {
           sourceUrl: this.file.sourceUrl,
           trackLength: this.file.trackLength,
           tags: this.file.tags
+        }
+      })
+    },
+    addToPlaylist (input) {
+      console.log(input)
+      Playlist.insert({
+        data: {
+          title: input.title,
+          artist: input.uploader,
+          src: input.downloadUrl,
+          sound_id: input.$id
+          // file: input
         }
       })
     }

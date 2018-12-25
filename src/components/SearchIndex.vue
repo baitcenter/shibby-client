@@ -1,13 +1,17 @@
 <template>
   <div class="search-container">
-    <input class="transp-form" type="text" v-model="searchInput" placeholder="Search...">
+    <div class="search-form">
+      <input class="transp-form search-input" type="text" v-model="searchInput" placeholder="Search...">
+      <button class="btn" v-if=" searchInput != '' " @click="searchInput = '' ">Clear</button>
+    </div>
     <ul class="filter-list" v-if="tagFilter.length !== 0">
       <li v-if="tagFilter.length > 1" class="clear-filters" @click="clearFilters">Clear all filters</li>
       <li v-for="(tag, index) in tagFilter"
         :key="tag">
         {{ tag }}
         <span @click="removeFromTagFilter(index)">
-          <font-awesome-icon :icon="close"></font-awesome-icon></span>
+          <font-awesome-icon :icon="close"></font-awesome-icon>
+        </span>
       </li>
     </ul>
     <section class="result-container">
@@ -17,41 +21,62 @@
             {{ result.title }}
           </router-link>
         </h2>
-        <Markdown>{{ result.description | truncate(50, '...') }}</Markdown>
-        <ul class="tag-list">
+        <small>By: {{ result.uploader }}</small>
+        <ul v-if="result.tags.length !== 0" class="tag-list">
           <li title="Add to Tag Filter"
             v-for="tag in result.tags"
             :key="tag.id"
             @click="pushToTagFilter(tag)
           ">{{ tag }}</li>
         </ul>
-        <form :action="result.sourceUrl" target="_blank">
-          <input class="btn"
-            type="submit"
-            value="Go to Source"
-          />
-        </form>
-        <button class="btn"
-          @click="addToPlaylist(result)">
-          Add to Playlist
-        </button>
+        <p>{{ result.description | truncate(50, '...') }}</p>
+        <footer class="result-footer">
+          <form :action="result.sourceUrl" target="_blank">
+            <input class="btn"
+              type="submit"
+              value="Go to Source"
+            />
+          </form>
+          <button class="btn"
+            @click="addToPlaylist(result)">
+            Add to Playlist
+          </button>
+        </footer>
       </article>
     </section>
   </div>
 </template>
 
 <script>
-import Markdown from 'vue-markdown'
+// import Markdown from 'vue-markdown'
 import Playlist from '@/models/Playlist'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 const tagFilterOptions = {
   keys: ['tags'],
+  tokenize: false,
+  // matchAllTokens: true,
   threshold: 0.1
+}
+const searchInputOptions = {
+  keys: [{
+    name: 'title',
+    weight: 0.6
+  }, {
+    name: 'description',
+    weight: 0.3
+  }, {
+    name: 'tags',
+    weight: 0.2
+  }],
+  tokenize: true,
+  minMatchCharLength: 2,
+  matchAllTokens: true,
+  threshold: 0.3
 }
 export default {
   components: {
-    Markdown,
+    // Markdown,
     FontAwesomeIcon
   },
   data () {
@@ -74,7 +99,10 @@ export default {
   computed: {
     results () {
       // return this.$store.getters['localDB/soundFiles/query']().search(this.searchInput).where().get()
-      return this.$store.getters['localDB/soundFiles/query']().search(this.tagFilter, tagFilterOptions).search(this.searchInput).get()
+      return this.$store.getters['localDB/soundFiles/query']()
+        .search(this.tagFilter, tagFilterOptions)
+        .search(this.searchInput, searchInputOptions)
+        .get()
     }
     // allTags () {
     // }
@@ -114,6 +142,16 @@ export default {
 <style lang="scss">
   @import '../scss/tools';
 
+  .search-form {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+  }
+  .search-input {
+    &::-webkit-search-cancel-button {
+      color: $font-color;
+    }
+  }
   .filter-list {
     margin: 0.5rem 0 0 0;
     display: flex;
@@ -137,23 +175,34 @@ export default {
     }
   }
   .tag-list {
+    margin: 0 -0.25rem;
     li {
       cursor: pointer;
     }
   }
 
   .result-container {
-    margin: -2.5rem 0 0;
+    // margin: -2.5rem 0 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
-    padding: 1em;
+    padding: 0 1em;
     form {
       display: inline;
     }
   }
+  .result-item {
+    width: 100%;
+    // margin-bottom: -1.5rem;
+    // &:first-of-type {
+    //   .result-title {
+    //     margin-top: 0;
+    //   }
+    // }
+  }
   .result-title {
+    margin-top: 1rem;
     font-size: 2em;
     a {
       text-decoration: none;
@@ -165,6 +214,9 @@ export default {
         color: $font-color;
       }
     }
+  }
+  .result-footer {
+    margin: 0.75rem -0.5rem 0;
   }
   // .search-container {
   //   max-width: 47.5em;

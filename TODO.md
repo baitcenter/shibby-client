@@ -8,6 +8,7 @@
   - [ ] Setup warnings
   - [X] Investigate the Vuex-ORM axios plugin
 - [X] Soundgasm crawler
+  - [ ] Validate url for soundgasm links only
   - [ ] Partially complete, still requires crawler to index a user
 - [X] Soundgasm api
 - [X] Search files
@@ -24,15 +25,18 @@
 - [-] Playlist
   - [ ] Stop player from refreshing when adding tracks, push updates to new array?
 - [X] Add Files modal
-- [-] Responsive design
+- [X] Responsive design
 - [ ] Rating
-- [ ] Add modals for success and warnings
+  - Likes or Star rating?
+- [ ] Fix unit testing with Jest
+- [ ] Add modals for success, errors and warnings
 
 ## Secondary
 
 - [ ] Audio backup
 - [ ] Admin login
   - [ ] Vuex auth?
-- [ ] JWT encryption?
-- [ ] Vuex caching
-
+  - [ ] JWT encryption?
+- [ ] Vuex caching of DB
+- [ ] Lazy load first api req
+ 

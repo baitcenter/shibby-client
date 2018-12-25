@@ -15,7 +15,9 @@
 
 .app {
   background-size: 200%;
-  // background-image: linear-gradient($light-angle, rgba(254,135,195, 0.8) 0%, rgba(130,141,254, 0.8) 50%, rgba(109,88,243, 0.8) 100%);
+  // background-image: linear-gradient($light-angle, rgba(254,135,195, 0.8) 0%, rgba(130,141,254, 0.8) 50%, rgba(109,88,243, 0.8) 100%); // Original, poor contrast
+  // background-image: linear-gradient($light-angle, #d04ed6, #834d9b); // Mjeh
+  // background-image: linear-gradient(($light-angle - 180), #8A2387, #E94057 66%, #F27121); // Slightlhy darker background option
   background-image: linear-gradient(($light-angle - 180), #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%); // Slightly better contrast
   transition: 600ms ease;
   overflow: hidden scroll;
