@@ -1,6 +1,7 @@
 {
-  "name": "shibby-search",
+  "name": "shibby-client",
   "version": "0.1.0",
+  "description": "Vue frontend",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

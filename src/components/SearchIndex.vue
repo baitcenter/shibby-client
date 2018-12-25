@@ -17,24 +17,26 @@
             {{ result.title }}
           </router-link>
         </h2>
-        <Markdown>{{ result.description | truncate(50, '...') }}</Markdown>
-        <ul class="tag-list">
+        <ul v-if="result.tags.length !== 0" class="tag-list">
           <li title="Add to Tag Filter"
             v-for="tag in result.tags"
             :key="tag.id"
             @click="pushToTagFilter(tag)
           ">{{ tag }}</li>
         </ul>
-        <form :action="result.sourceUrl" target="_blank">
-          <input class="btn"
-            type="submit"
-            value="Go to Source"
-          />
-        </form>
-        <button class="btn"
-          @click="addToPlaylist(result)">
-          Add to Playlist
-        </button>
+        <Markdown>{{ result.description | truncate(50, '...') }}</Markdown>
+        <footer class="result-footer">
+          <form :action="result.sourceUrl" target="_blank">
+            <input class="btn"
+              type="submit"
+              value="Go to Source"
+            />
+          </form>
+          <button class="btn"
+            @click="addToPlaylist(result)">
+            Add to Playlist
+          </button>
+        </footer>
       </article>
     </section>
   </div>
@@ -47,6 +49,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 const tagFilterOptions = {
   keys: ['tags'],
+  tokenize: false,
+  // matchAllTokens: true,
   threshold: 0.1
 }
 export default {
@@ -137,23 +141,34 @@ export default {
     }
   }
   .tag-list {
+    padding: 0 -0.25rem;
     li {
       cursor: pointer;
     }
   }
 
   .result-container {
-    margin: -2.5rem 0 0;
+    // margin: -2.5rem 0 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
-    padding: 1em;
+    padding: 0 1em;
     form {
       display: inline;
     }
   }
+  .result-item {
+    width: 100%;
+    // margin-bottom: -1.5rem;
+    &:first-of-type {
+      .result-title {
+        margin-top: 0;
+      }
+    }
+  }
   .result-title {
+    margin-top: 1rem;
     font-size: 2em;
     a {
       text-decoration: none;
@@ -165,6 +180,9 @@ export default {
         color: $font-color;
       }
     }
+  }
+  .result-footer {
+    margin: 0.75rem -0.5rem 0;
   }
   // .search-container {
   //   max-width: 47.5em;

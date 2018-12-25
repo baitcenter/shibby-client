@@ -10,6 +10,8 @@ VuexORM.use(VuexORMSearch, {
   // configure default fuse.js options here (see below)
   shouldSort: true,
   tokenize: true,
+  matchAllTokens: true,
+  minMatchCharLength: 3,
   caseSensitive: false,
   findAllMatches: true,
   keys: ['title', 'description', 'tags']

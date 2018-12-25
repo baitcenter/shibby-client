@@ -3,7 +3,7 @@
     <Aplayer
       v-if="playlist.length !== 0"
       :list="playlist"
-       autoplay="true"
+      :autoplay="true"
       :music="{
         src: playlist.src,
         artist: playlist.artist,
@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     playlist () {
-      return this.$store.getters['localDB/playlist/query']().all()
+      return this.$store.getters['localDB/playlist/query']().with('file').get()
     } // ,
     // playlist () {
     //   playlistFetch.forEach(item => {

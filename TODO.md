@@ -8,6 +8,7 @@
   - [ ] Setup warnings
   - [X] Investigate the Vuex-ORM axios plugin
 - [X] Soundgasm crawler
+  - [ ] Validate url for soundgasm links only
   - [ ] Partially complete, still requires crawler to index a user
 - [X] Soundgasm api
 - [X] Search files
@@ -37,4 +38,5 @@
   - [ ] Vuex auth?
   - [ ] JWT encryption?
 - [ ] Vuex caching of DB
-
+- [ ] Lazy load first api req
+ 

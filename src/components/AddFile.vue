@@ -1,6 +1,6 @@
 <template>
   <div class="add-file">
-    <form class="search-form" @submit.prevent="fetchFile">
+    <form class="search-form" @submit.prevent="scrapeFile">
       <input
         class="transp-form"
         type="text"
@@ -71,7 +71,7 @@ export default {
         }
       })
     },
-    async fetchFile (params) {
+    async scrapeFile (params) {
       const response = await Scraper.scrapeFile({
         params: {
           soundgasmUrl: this.soundgasmUrl
@@ -83,7 +83,7 @@ export default {
       })
       this.sound = response.data
     },
-    removeTag () {
+    removeTag (index) {
 
     }
   }
@@ -106,6 +106,7 @@ export default {
       @include respond(tablet) {
         flex-direction: row;
         .markdown-input{
+          min-width: 22em;
           max-width: 50%;
         }
       }
