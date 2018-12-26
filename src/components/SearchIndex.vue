@@ -61,13 +61,13 @@ const tagFilterOptions = {
 const searchInputOptions = {
   keys: [{
     name: 'title',
-    weight: 0.6
+    weight: 0.8
   }, {
     name: 'description',
     weight: 0.3
   }, {
     name: 'tags',
-    weight: 0.2
+    weight: 0.1
   }],
   tokenize: true,
   minMatchCharLength: 2,

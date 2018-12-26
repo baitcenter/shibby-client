@@ -25,8 +25,8 @@
 
     svg {
       path {
-        &:first-child { fill: rgba(255, 255, 255, 0.2); }
-        &:last-child { fill: rgba(255, 255, 255, 0.3); }
+        &:first-child { fill: rgba(255, 255, 255, 0.1); }
+        &:last-child { fill: rgba(255, 255, 255, 0.15); }
       }
     }
   }

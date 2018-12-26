@@ -1,12 +1,17 @@
 $nav-height: 5rem;
-$default-font: 'Montserrat', sans-serif;
+
+$fallback-fonts: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$default-font: 'Open Sans', $fallback-fonts;
 $p-font: $default-font;
-$h-font: 'Dancing Script', cursive;
+$h-font: 'Open Sans Condensed', $fallback-fonts;
+$heading-font: $h-font;
 $code-font: monospace;
 $button-font: $default-font;
 
 $font-color: #eee;
 $heading-color: $font-color;
 $link-color: #3742fa;
+// $theme-color: #ee609c;
+$theme-color: darken(#9D50BB, 5%);
 
 $l-height: 1.5em;

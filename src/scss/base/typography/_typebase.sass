@@ -12,8 +12,8 @@ $scale: 1.2
 /* Setup */
 html
   /* Change default typefaces here */
-  // font-family: serif
-  font-size: $baseFontSize / 16 * 100%
+  font-family: $default-font
+  // font-size: $baseFontSize / 16 * 100%
 
   // Make everything look a little nicer in webkit
   -webkit-font-smoothing: antialiased
@@ -53,7 +53,8 @@ blockquote
 /* Headings */
 h1, h2, h3, h4, h5, h6
   /* Change heading typefaces here */
-  font-family: 'Dancing Script', cursive
+  font-family: $heading-font
+  // font-weight: 300
   margin-top: $leading
   margin-bottom: 0
   line-height: $leading
