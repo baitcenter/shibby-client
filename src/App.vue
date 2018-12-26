@@ -13,6 +13,17 @@
 <style lang="scss">
 @import 'scss/tools';
 
+body {
+  background: #ee609c;
+  font-size: 12px;
+  @include respond (mobile) {
+    font-size: 14px;
+  }
+  @include respond(phablet) {
+    font-size: 16px;
+  }
+}
+
 .app {
   background-size: 200%;
   // background-image: linear-gradient($light-angle, rgba(254,135,195, 0.8) 0%, rgba(130,141,254, 0.8) 50%, rgba(109,88,243, 0.8) 100%); // Original, poor contrast
