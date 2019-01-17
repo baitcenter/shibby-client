@@ -34,6 +34,7 @@ body {
   // background-image: linear-gradient(($light-angle - 180), #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%); // Slightly better contrast
   // background-image: linear-gradient($light-angle, #41295a, #2F0743);
   background-image: linear-gradient($light-angle, darken(#9D50BB, 5%), darken(#6E48AA, 5%));
+  background-image: $background-gradient;
   transition: 600ms ease;
   overflow-x: hidden;
   overflow-y: scroll;

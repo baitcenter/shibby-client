@@ -6,16 +6,18 @@
       <ul class="tag-list">
         <li v-for="tag in file.tags" :key="tag">{{ tag }}</li>
       </ul>
-      <form :action="file.sourceUrl" target="_blank">
-        <input class="btn"
-          type="submit"
-          value="Go to Source"
-        />
-      </form>
-      <button class="btn"
-        @click="addToPlaylist(file)">
-        Add to Playlist
-      </button>
+      <footer>
+        <form :action="file.sourceUrl" target="_blank">
+          <input class="btn"
+            type="submit"
+            value="Go to Source"
+          />
+        </form>
+        <button class="btn"
+          @click="addToPlaylist(file)">
+          Add to Playlist
+        </button>
+      </footer>
       <button v-if="hasAuth" lass="btn transp-btn">
         <router-link v-bind:to="{ name: 'edit', params: { id: file.$id } }">
           Edit File
@@ -83,5 +85,10 @@ export default {
 
   .single-file {
     margin: 0 1rem;
+    footer {
+      display: flex;
+      flex-direction: row;
+      margin: 0 -0.5rem;
+    }
   }
 </style>
